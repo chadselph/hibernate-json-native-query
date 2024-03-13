@@ -23,7 +23,7 @@ public class TestHibernate {
       var rows =
           session
               .createNativeQuery("SELECT CAST('[1,2,3]' as jsonb) as data, 2 as id", Object[].class)
-              .addScalar("data")
+              .addScalar("data", JsonbType.class)
               .addScalar("id", StandardBasicTypes.INTEGER)
               .list();
       rows.forEach(row -> System.out.println(row[0].getClass() + " -> " + row[0]));
